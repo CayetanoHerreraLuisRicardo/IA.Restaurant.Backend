@@ -22,7 +22,7 @@ namespace IA.Restaurant.Logic.Order
             OrderModel order = new OrderModel();
             using TransactionScope scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
             Orders newItem = new Orders();
-            Orders lastItem = (_unitOfWork.OrderRepository.GetIQueryable()).OrderByDescending(x => x.IdOrder).FirstOrDefault();
+            Orders? lastItem = (_unitOfWork.OrderRepository.GetIQueryable()).OrderByDescending(x => x.IdOrder).FirstOrDefault();
             int idOrder = lastItem != null ? lastItem.IdOrder + 1 : 1;
             newItem.IdStatus = 1;
             newItem.IdOrder = idOrder;
@@ -60,9 +60,9 @@ namespace IA.Restaurant.Logic.Order
         }
         public async Task<List<OrderModel>> Get(List<FilterExpression> filter)
         {
-            Expression<Func<Orders, bool>> orderExpression = filter != null ? ExpressionBuilder.ConstruyendoExpresion<Orders>(filter.Where(x => typeof(Orders).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
-            Expression<Func<OrderDetails, bool>> orderDetailExpression = filter != null ? ExpressionBuilder.ConstruyendoExpresion<OrderDetails>(filter.Where(x => typeof(OrderDetails).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
-            Expression<Func<Status, bool>> statusExpression = filter != null ? ExpressionBuilder.ConstruyendoExpresion<Status>(filter.Where(x => typeof(Status).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
+            Expression<Func<Orders, bool>>? orderExpression = filter != null ? ExpressionBuilder.ConstruyendoExpresion<Orders>(filter.Where(x => typeof(Orders).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
+            Expression<Func<OrderDetails, bool>>? orderDetailExpression = filter != null ? ExpressionBuilder.ConstruyendoExpresion<OrderDetails>(filter.Where(x => typeof(OrderDetails).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
+            Expression<Func<Status, bool>>? statusExpression = filter != null ? ExpressionBuilder.ConstruyendoExpresion<Status>(filter.Where(x => typeof(Status).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
 
             List<OrderModel> lstOrders = (from o in _unitOfWork.OrderRepository.GetIQueryable(orderExpression)
                                           join s in _unitOfWork.StatusRepository.GetIQueryable(statusExpression)
@@ -102,8 +102,8 @@ namespace IA.Restaurant.Logic.Order
         }
         public IEnumerable<ProductModel> GetProducts(List<FilterExpression> filters)
         {
-            Expression<Func<OrderDetails, bool>> odExpression = filters != null ? ExpressionBuilder.ConstruyendoExpresion<OrderDetails>(filters.Where(x => typeof(OrderDetails).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
-            Expression<Func<Products, bool>> productExpression = filters != null ? ExpressionBuilder.ConstruyendoExpresion<Products>(filters.Where(x => typeof(Products).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
+            Expression<Func<OrderDetails, bool>>? odExpression = filters != null ? ExpressionBuilder.ConstruyendoExpresion<OrderDetails>(filters.Where(x => typeof(OrderDetails).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
+            Expression<Func<Products, bool>>? productExpression = filters != null ? ExpressionBuilder.ConstruyendoExpresion<Products>(filters.Where(x => typeof(Products).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
             IEnumerable<ProductModel> products = (from od in _unitOfWork.OrderDetailRepository.GetIQueryable(odExpression)
                                                   join p in _unitOfWork.ProductRepository.GetIQueryable(productExpression)
                                                   on od.IdProduct equals p.IdProduct

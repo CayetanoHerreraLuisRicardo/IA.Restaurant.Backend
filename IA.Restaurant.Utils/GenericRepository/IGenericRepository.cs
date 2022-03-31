@@ -22,7 +22,7 @@ namespace IA.Restaurant.Utils.GenericRepository
         /// <param name="orderBy">order by</param>
         /// <param name="includeProperties">properties to include of the entity</param>
         /// <returns>IEnumerable<TEntity></returns>
-        Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
+        Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>>? filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, string includeProperties = "");
         /// <summary>
         /// get data as a IQueryable
         /// </summary>
@@ -30,7 +30,7 @@ namespace IA.Restaurant.Utils.GenericRepository
         /// <param name="orderBy">order by</param>
         /// <param name="includeProperties">properties to include of the entity</param>
         /// <returns>IEnumerable<TEntity></returns>
-        IQueryable<TEntity> GetIQueryable(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
+        IQueryable<TEntity> GetIQueryable(Expression<Func<TEntity, bool>>? filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, string includeProperties = "");
         /// <summary>
         /// delete by id
         /// </summary>

@@ -1,9 +1,10 @@
+using IA.Restaurant.Api;
 using IA.Restaurant.Data;
 using IA.Restaurant.Data.Helpers;
 using IA.Restaurant.Logic;
 
 var builder = WebApplication.CreateBuilder(args);
-
+OpenApi.ConfigureServices(builder.Services);
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -39,7 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+OpenApi.Configure(app);
 app.UseAuthorization();
 
 app.MapControllers();

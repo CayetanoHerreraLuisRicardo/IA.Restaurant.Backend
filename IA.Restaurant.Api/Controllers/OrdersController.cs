@@ -44,7 +44,7 @@ namespace AI.Restaurant.API.Controllers
         /// <summary>
         /// get order by id
         /// </summary>
-        /// <param name="id">
+        /// <param name="idOrder">
         ///id del producto
         /// </param>
         /// <remarks>Aquí es donde podras consultar el producto por id</remarks>
@@ -72,7 +72,7 @@ namespace AI.Restaurant.API.Controllers
                     Value = idOrder
                 }
             };
-            OrderModel order = (await _logic.Get(queryfilter)).FirstOrDefault();
+            OrderModel? order = (await _logic.Get(queryfilter)).FirstOrDefault();
             if(order == null)
                 return NotFound();
             return Ok(order);
@@ -104,12 +104,13 @@ namespace AI.Restaurant.API.Controllers
             OrderModel order = await _logic.Create(body);
             if (!order.lstProduct.Any())
                 return BadRequest();
-            /// we send the uri of the new resource created in the headers
+            // we send the uri of the new resource created in the headers
             return CreatedAtAction(actionName: "GetOrderById", controllerName: "Orders", routeValues: new { idOrder = order.IdOrder }, order);
         }
         /// <summary>
         /// update product
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="body">
         /// filtro para obtener elementos
         /// </param>

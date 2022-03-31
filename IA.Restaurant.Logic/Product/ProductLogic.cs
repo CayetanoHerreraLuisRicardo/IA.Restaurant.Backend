@@ -46,14 +46,14 @@ namespace IA.Restaurant.Logic.Product
         /// <inheritdoc/>
         public async Task<ProductModel> ReadById(int id)
         {
-            Products product = _unitOfWork.ProductRepository.GetIQueryable(x => x.IdProduct == id && x.Deleted == false).FirstOrDefault();
+            Products? product = _unitOfWork.ProductRepository.GetIQueryable(x => x.IdProduct == id && x.Deleted == false).FirstOrDefault();
             await Task.CompletedTask;
             return _mapper.Map<Products, ProductModel>(product);
         }
 
         public async Task<IEnumerable<ProductModel>> Read(List<FilterExpression> filters)
         {
-            Expression<Func<Products, bool>> expression = filters != null ? ExpressionBuilder.ConstruyendoExpresion<Products>(filters.Where(x => typeof(Products).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()) : (t => true);
+            Expression<Func<Products, bool>>? expression = filters != null ? ExpressionBuilder.ConstruyendoExpresion<Products>(filters.Where(x => typeof(Products).GetProperties().Any(p => p.Name.ToLower() == x.PropertyName.ToLower())).ToList()): (t=> true);
             await Task.CompletedTask;
             return _mapper.Map<IEnumerable<Products>, IEnumerable<ProductModel>>(_unitOfWork.ProductRepository.GetIQueryable(expression));
         }

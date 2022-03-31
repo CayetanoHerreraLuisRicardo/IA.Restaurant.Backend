@@ -8,9 +8,9 @@ namespace IA.Restaurant.Utils.QueryFilter
 {
     public static class FilterExpressionBuilder
     {
-        public static List<FilterExpression> BuildFilterExpression(this String queryfilter)
+        public static List<FilterExpression>? BuildFilterExpression(this String queryfilter)
         {
-            List<FilterExpression> filtros = null;
+            List<FilterExpression>? filtros = null;
             if (queryfilter != null)
                 if (queryfilter.Length > 0)
                     filtros = JsonConvert.DeserializeObject<List<FilterExpression>>(queryfilter);
@@ -29,7 +29,7 @@ namespace IA.Restaurant.Utils.QueryFilter
         /// <typeparam name="T"></typeparam>
         /// <param name="filters">filter to apply</param>
         /// <returns>Expression Lambda</returns>
-        public static Expression<Func<T, bool>> ConstruyendoExpresion<T>(List<FilterExpression> filters, Type entityType = null)
+        public static Expression<Func<T, bool>>? ConstruyendoExpresion<T>(List<FilterExpression> filters)
         {
             if (filters == null)
                 return null;
@@ -37,23 +37,23 @@ namespace IA.Restaurant.Utils.QueryFilter
                 return null;
 
             ParameterExpression param = Expression.Parameter(typeof(T), "t");
-            Expression exp = null;
+            Expression? exp = null;
 
             if (filters.Count == 1)
             {
-                exp = RecuperaExpresion.GetExpression<T>(param, filters[0], entityType);
+                exp = RecuperaExpresion.GetExpression<T>(param, filters[0]);
             }
             else
             {
-                exp = RecuperaExpresion.GetExpression<T>(param, filters[0], entityType);
+                exp = RecuperaExpresion.GetExpression<T>(param, filters[0]);
 
                 for (int i = 1; i < filters.Count; i++)
                 {
 
                     if (filters[i - 1].Conjunction != Conjunction.And)
-                        exp = Expression.Or(exp, RecuperaExpresion.GetExpression<T>(param, filters[i], entityType));
+                        exp = Expression.Or(exp, RecuperaExpresion.GetExpression<T>(param, filters[i]));
                     else
-                        exp = Expression.AndAlso(exp, RecuperaExpresion.GetExpression<T>(param, filters[i], entityType));
+                        exp = Expression.AndAlso(exp, RecuperaExpresion.GetExpression<T>(param, filters[i]));
                 }
             }
             return Expression.Lambda<Func<T, bool>>(exp, param);
@@ -65,16 +65,16 @@ namespace IA.Restaurant.Utils.QueryFilter
     public static class RecuperaExpresion
     {
 
-        private static MethodInfo containsMethod = typeof(string).GetMethod("Contains",
+        private static MethodInfo? containsMethod = typeof(string).GetMethod("Contains",
             BindingFlags.Public | BindingFlags.Instance,
             null, CallingConventions.Any,
             new Type[] { typeof(String) }, null); //typeof(string).GetMethod("Contains");
-        private static readonly MethodInfo toStringMethod = typeof(object).GetMethod("ToString");
-        private static readonly MethodInfo Contains = typeof(string).GetMethod("Contains", new[] { typeof(string) });
-        private static readonly MethodInfo startsWithMethod = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
-        private static readonly MethodInfo endsWithMethod = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
-        private static readonly MethodInfo miTrim = typeof(string).GetMethod("Trim", Type.EmptyTypes);
-        private static readonly MethodInfo miLower = typeof(string).GetMethod("ToLower", Type.EmptyTypes);
+        private static readonly MethodInfo? toStringMethod = typeof(object).GetMethod("ToString");
+        private static readonly MethodInfo? Contains = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+        private static readonly MethodInfo? startsWithMethod = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
+        private static readonly MethodInfo? endsWithMethod = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
+        private static readonly MethodInfo? miTrim = typeof(string).GetMethod("Trim", Type.EmptyTypes);
+        private static readonly MethodInfo? miLower = typeof(string).GetMethod("ToLower", Type.EmptyTypes);
 
         /// <summary>
         /// Método para crear la expresión a aplicar por un filtro
@@ -83,7 +83,7 @@ namespace IA.Restaurant.Utils.QueryFilter
         /// <param name="param">Alias de la expresión, EJEMPLO: t => </param>
         /// <param name="filter">Filtro a aplicar</param>
         /// <returns>Expresión</returns>
-        public static Expression GetExpression<T>(ParameterExpression param, FilterExpression filter, Type entityType = null)
+        public static Expression? GetExpression<T>(ParameterExpression param, FilterExpression filter)
         {
             var member = Expression.Property(param, filter.PropertyName);
             var propertyType = ((PropertyInfo)member.Member).PropertyType;
@@ -92,8 +92,8 @@ namespace IA.Restaurant.Utils.QueryFilter
             if (!converter.CanConvertFrom(typeof(string))) // 2
                 throw new NotSupportedException();
 
-            // Trata de convertir el valor al tipo de dato del campo enviado: No aplica para Contains y tipo de daton Int, Tampoco si es un In
-            var propertyValue = filter.Value != null ? converter.ConvertFromInvariantString(filter.Value.ToString().Trim().ToLower()) : null; // 3
+            // Trata de convertir el valor al tipo de dato del campo enviado
+            var propertyValue = filter.Value != null ? converter.ConvertFromInvariantString(filter.Value.ToString().Trim().ToLower()) : null; 
             var constant = Expression.Constant(propertyValue);
             var valueExpression = Expression.Convert(constant, propertyType); // 4
 
@@ -130,14 +130,14 @@ namespace IA.Restaurant.Utils.QueryFilter
         /// <param name="properties">Son los campos en los que se realiza el filtrado.</param>
         /// <param name="searchText">Palabra a buscar</param>
         /// <returns>Expressión</returns>
-        public static Expression SearchPredicate(ParameterExpression param, IEnumerable<string> properties, string searchText)
+        public static Expression? SearchPredicate(ParameterExpression param, IEnumerable<string> properties, string searchText)
         {
-            Expression exp = null;
+            Expression? exp = null;
             bool first = true;
-            Expression memberStringCall = null;
-            Expression trimMethod = null;
-            Expression toLowerMethod = null;
-            UnaryExpression valueExp = null;
+            Expression? memberStringCall = null;
+            Expression? trimMethod = null;
+            Expression? toLowerMethod = null;
+            UnaryExpression? valueExp = null;
             foreach (var valor in properties)
             {
                 var typeProperty = Expression.Property(param, valor).Type;
@@ -175,7 +175,7 @@ namespace IA.Restaurant.Utils.QueryFilter
         public static IQueryable ToQueryable(object instance, TypeConverter typeConverter, Type type)
         {
             // Se declara una lista, que funcione como cascaron para castear a IQueryable
-            List<dynamic> list = null;
+            List<dynamic>? list = null;
 
             // Si el objeto es de tipo JArray 
             // (que se supone que debería ser así, ya que la propiedad Valor del filtro es un tipo object, y no lo castea a ningun tipo de dato)
@@ -189,23 +189,23 @@ namespace IA.Restaurant.Utils.QueryFilter
             // Si es un string "1,2,3" lo convierte a lista.
             else if (instance.GetType() == typeof(string))
             {
-                list = instance.ToString().Split(",").ToList<dynamic>();
+                list = instance?.ToString()?.Split(",").ToList<dynamic>();
             }
             // Si el objeto ya es una lista (cuando el filtro se hace desde el backend y no pasa por ninguna petición)
             else if (instance is System.Collections.IList)
             {
-                System.Collections.IList genericList = instance as System.Collections.IList;
-                list = genericList.Cast<object>().ToList();
+                System.Collections.IList? genericList = instance as System.Collections.IList;
+                list = genericList?.Cast<object>().ToList();
             }
             // Si no, sólo hace una lista dinámica con el objeto
             else
                 list = new List<dynamic>() { instance };
 
             // Crea una lista genérica con el tipo de dato de la propiedad
-            var typedList = (System.Collections.IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(type));
+            var typedList = (System.Collections.IList?)Activator.CreateInstance(typeof(List<>).MakeGenericType(type));
             // Por cada item en la lista, lo transforma en el tipo de dato que tiene la propiedad del In, 
             // para que el .Contains pueda validar el mismo tipo de dato
-            var aux = list.Select(i => typedList.Add(typeConverter.ConvertFromInvariantString(i.ToString()))).ToList();
+            var aux = list?.Select(i => typedList?.Add(typeConverter.ConvertFromInvariantString(i.ToString()))).ToList();
             // Retorna la lista como un queryable
             return typedList.AsQueryable();
         }

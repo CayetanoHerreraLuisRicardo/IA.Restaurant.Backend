@@ -28,8 +28,8 @@ namespace IA.Restaurant.Utils.GenericRepository
         }
         /// <inheritdoc/>
         public virtual async Task<IEnumerable<TEntity>> GetAsync(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
         {
             IQueryable<TEntity> query = dbSet;
@@ -56,8 +56,8 @@ namespace IA.Restaurant.Utils.GenericRepository
         }
         /// <inheritdoc/>
         public virtual IQueryable<TEntity> GetIQueryable(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>>? filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
         {
             IQueryable<TEntity> query = dbSet;
@@ -85,7 +85,7 @@ namespace IA.Restaurant.Utils.GenericRepository
         /// <inheritdoc/>
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = dbSet.Find(id);
+            TEntity? entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
         }
         /// <inheritdoc/>
@@ -132,8 +132,8 @@ namespace IA.Restaurant.Utils.GenericRepository
         /// <inheritdoc/>
         public virtual async Task UpdateAsync(TEntity entityToUpdate, Expression<Func<TEntity, bool>> expression)
         {
-            TEntity original = await dbSet.Where(expression).FirstOrDefaultAsync();
-            var originalEntry = context.Entry(original);
+            TEntity? original = await dbSet.Where(expression).FirstOrDefaultAsync();
+            var originalEntry = context?.Entry(original);
             foreach (var property in originalEntry.Metadata.GetProperties())
             {
                 // remove CreationDate and ModificationDate fields 
