@@ -1,0 +1,2137 @@
+{
+	"info": {
+		"_postman_id": "3c9905ff-3798-49fa-82a1-c0a7028c15f2",
+		"name": "IA.Restaurant.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "/api/Orders",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Orders?queryfilter=[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Orders"
+									],
+									"query": [
+										{
+											"key": "queryfilter",
+											"value": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders?queryfilter=[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders?queryfilter=[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"idOrder\": -43154485,\n    \"status\": \"qui magna est\",\n    \"idStatus\": -25126052,\n    \"lstProduct\": [\n      {\n        \"idProduct\": -14818075,\n        \"sku\": \"cupidatat lab\",\n        \"name\": \"ex ut et\",\n        \"unitPrice\": -40937230.607600704,\n        \"stock\": -88905058\n      },\n      {\n        \"idProduct\": -70396177,\n        \"sku\": \"enim magna elit occaecat\",\n        \"name\": \"ut est proident\",\n        \"unitPrice\": 88364064.1141698,\n        \"stock\": 45897061\n      }\n    ]\n  },\n  {\n    \"idOrder\": 78407383,\n    \"status\": \"qui minim pariatur\",\n    \"idStatus\": -8074874,\n    \"lstProduct\": [\n      {\n        \"idProduct\": 73763124,\n        \"sku\": \"eiusmod reprehenderit\",\n        \"name\": \"eiusmod\",\n        \"unitPrice\": 37717922.48647717,\n        \"stock\": -19208068\n      },\n      {\n        \"idProduct\": 97098514,\n        \"sku\": \"veniam Excepteur anim amet esse\",\n        \"name\": \"nostrud voluptate\",\n        \"unitPrice\": -45401921.23936482,\n        \"stock\": -45086930\n      }\n    ]\n  }\n]"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders?queryfilter=[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders?queryfilter=[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders?queryfilter=[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/Orders",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"idOrder\": 42050535,\n  \"status\": \"ea et\",\n  \"idStatus\": 72937124,\n  \"lstProduct\": [\n    {\n      \"idProduct\": \"<integer>\",\n      \"sku\": \"<string>\",\n      \"name\": \"<string>\",\n      \"unitPrice\": \"<double>\",\n      \"stock\": \"<integer>\"\n    },\n    {\n      \"idProduct\": \"<integer>\",\n      \"sku\": \"<string>\",\n      \"name\": \"<string>\",\n      \"unitPrice\": \"<double>\",\n      \"stock\": \"<integer>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Order By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Orders/:idOrder",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Orders",
+										":idOrder"
+									],
+									"variable": [
+										{
+											"key": "idOrder",
+											"value": "<integer>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:idOrder",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":idOrder"
+											],
+											"variable": [
+												{
+													"key": "idOrder",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:idOrder",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":idOrder"
+											],
+											"variable": [
+												{
+													"key": "idOrder",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:idOrder",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":idOrder"
+											],
+											"variable": [
+												{
+													"key": "idOrder",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"idOrder\": 42050535,\n  \"status\": \"ea et\",\n  \"idStatus\": 72937124,\n  \"lstProduct\": [\n    {\n      \"idProduct\": \"<integer>\",\n      \"sku\": \"<string>\",\n      \"name\": \"<string>\",\n      \"unitPrice\": \"<double>\",\n      \"stock\": \"<integer>\"\n    },\n    {\n      \"idProduct\": \"<integer>\",\n      \"sku\": \"<string>\",\n      \"name\": \"<string>\",\n      \"unitPrice\": \"<double>\",\n      \"stock\": \"<integer>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:idOrder",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":idOrder"
+											],
+											"variable": [
+												{
+													"key": "idOrder",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:idOrder",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":idOrder"
+											],
+											"variable": [
+												{
+													"key": "idOrder",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:idOrder",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":idOrder"
+											],
+											"variable": [
+												{
+													"key": "idOrder",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Orders/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Orders/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idOrder\": \"<integer>\",\n  \"idStatus\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Orders/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Orders",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/Products/:id",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/Products/:id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+										},
+										{
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+										},
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/api/Products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Products?queryfilter=[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Products"
+									],
+									"query": [
+										{
+											"key": "queryfilter",
+											"value": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products?queryfilter=[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products?queryfilter=[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products?queryfilter=[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products?queryfilter=[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products?queryfilter=[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											],
+											"query": [
+												{
+													"key": "queryfilter",
+													"value": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  },\n  {\n    \"idProduct\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"name\": \"<string>\",\n    \"unitPrice\": \"<double>\",\n    \"stock\": \"<integer>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "/api/Products",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Products/:idProduct",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Products",
+										":idProduct"
+									],
+									"variable": [
+										{
+											"key": "idProduct",
+											"value": "<integer>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:idProduct",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":idProduct"
+											],
+											"variable": [
+												{
+													"key": "idProduct",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:idProduct",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":idProduct"
+											],
+											"variable": [
+												{
+													"key": "idProduct",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:idProduct",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":idProduct"
+											],
+											"variable": [
+												{
+													"key": "idProduct",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"idProduct\": \"<integer>\",\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"unitPrice\": \"<double>\",\n  \"stock\": \"<integer>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:idProduct",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":idProduct"
+											],
+											"variable": [
+												{
+													"key": "idProduct",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								},
+								{
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Products/:idProduct",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Products",
+												":idProduct"
+											],
+											"variable": [
+												{
+													"key": "idProduct",
+													"value": "<integer>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"commodo deserunt\",\n  \"title\": \"Lorem sit volu\",\n  \"status\": 64342652,\n  \"detail\": \"amet sunt anim do culpa\",\n  \"instance\": \"eiusmod c\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}

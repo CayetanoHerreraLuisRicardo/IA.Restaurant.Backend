@@ -1,0 +1,763 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Restaurant",
+    "description": "Documentación de la API usando la especificación OpenAPI.\n\nEsta api actualmente cuenta con la version 1, el cual incluye: \n\n \t - CRUD de productos \n\t\t Crear producto \n\t\t Consultar lista de productos \n\t\t Consultar producto por id \n\t\t Actualizar producto por id \n\t\t Eliminar producto por id \n\t - Para Ordenes se hicieron los servicios solicitados: \n\t\t Dar de alta una orden \n\t\t Cambio de estatus de la orden \n\t\t Se agregó un servicio extra para Consultar una orden por id :). \n\n\nPara poder aplicar los filtros en los endpoints GET de Products y Orders se agregaron ejemplos en cada uno de estos endpoints para poder hacer las pruebas, de cualquier manera a continuación se describe como se arma el filtro o queryparam, tambien se describe para que sirve cada unos de ellos. \n\nLos endpoints GET(para consultar productos y ordenes) espera recibir un query param con un valor en forma string (el valor que se envia en los parametros queryFilter) esta cadena debe armarse de la siguiente forma: \n\n\t [{\"PropertyName\": \"Sku\",\"Value\": \"DPY-001-A\", \"Comparison\": 0}]. \n\n\nPracticamente le estamos pasando un arreglo o coleccion de filtros, para este ejemplo es un solo filtro va hacer el filtro para buscar todos los registros que tengan en Sku = DPY-001-A \n\n\t Para el valor de Comparison se utiliza para saber que comparación se tiene que aplicar los valores que acepta actualemnte son: \n\t\t 0 (=) Igual al valor que se envie en PropertyName \n\t\t 1 (<) Menor que el valor que se envie en PropertyName \n\t\t 2 (>=) Menor o igual al valor que se envie en PropertyName \n\t\t 3 (>) Mayor que el valor que se envie en PropertyName \n\t\t 4 (>=) Mayor o Igual al valor que se envie en PropertyName\n\t\t 5 (<>) Distinto o diferente al valor que se envie en PropertyName\n\n Por ultimo si requieres enviar varios filtros al mismo tiempo necesitas enviar otra propiedad para indicarle que conjugacion se tendrá que aplicar \n\n\t\t 0 (AND) \n\t\t 1 (OR) \n\n!Para esta primera version no se agregaron mensajes de custom para los errores que se pudieran presentar!\n\nPara los endpoits POST(crear un nuevo recurso), PUT(actualizar un recurso), PATCH(modificacion parcial de un recurso), DELETE(eliminar unn recurso) solo basta con enviar los datos que se te solicitan.",
+    "contact": {
+      "name": "Ricardo Cayetano",
+      "url": "https://about.me/richy_92",
+      "email": "richych92@gmail.com"
+    },
+    "license": {
+      "name": "UNLICENCE"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "get orders by query",
+        "description": "you call get list of orders",
+        "parameters": [
+          {
+            "name": "queryfilter",
+            "in": "query",
+            "description": "query filter to apply, query example: where IdStatus = 1   [{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]",
+            "schema": {
+              "type": "string",
+              "default": "[{\"PropertyName\": \"IdStatus\",\"Value\": 1, \"Comparison\": 0}]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderModel"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "create order",
+        "description": "Aquí es donde podras crear la programación masiva de vacaciones de varios empleados al mismo tiempo",
+        "requestBody": {
+          "description": "order with the list of products",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductModel"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          },
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    },
+    "/api/Orders/{idOrder}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "get order by id",
+        "description": "Aquí es donde podras consultar el producto por id",
+        "operationId": "GetOrderById",
+        "parameters": [
+          {
+            "name": "idOrder",
+            "in": "path",
+            "description": "id del producto",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      }
+    },
+    "/api/Orders/{id}": {
+      "patch": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "update product",
+        "description": "Aquí es donde podras crear la programación masiva de vacaciones de varios empleados al mismo tiempo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "filtro para obtener elementos",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderStatusModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderStatusModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      }
+    },
+    "/api/Products/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "obtener producto por id",
+        "description": "Aquí es donde podras consultar un producto por id",
+        "operationId": "GetProductById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id del producto",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "update product",
+        "description": "Aquí es donde podras crear la programación masiva de vacaciones de varios empleados al mismo tiempo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id del producto",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "filtro para obtener elementos",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Crear Programacion masiva de vacaciones",
+        "description": "Aquí es donde podras crear la programación masiva de vacaciones de varios empleados al mismo tiempo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id del producto",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      }
+    },
+    "/api/Products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "consultar la lista de productos aplicando un filtro",
+        "description": "`Ejemplo #1` consultar los productos con `Sku` igual a DPY-001-A necesitas enviar en el parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"Sku\",\r\n        \"Value\": \"DPY-001-A\", \r\n        \"Comparison\": 0}\r\n    ]\r\n    \r\n`Ejemplo #2` consultar los productos con `Stock` menor a 10 necesitas enviar en parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"Stock\",\r\n        \"Value\": 10, \r\n        \"Comparison\": 1}\r\n    ]\r\n    \r\n`Ejemplo #3` consultar los productos con `UnitPrice` menor o igual a 100 necesitas enviar en parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"UnitPrice\",\r\n        \"Value\": 100, \r\n        \"Comparison\": 2}\r\n    ]\r\n    \r\n`Ejemplo #4` consultar los productos con `Stock` mayor a 0 necesitas enviar en parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"Stock\",\r\n        \"Value\": 0, \r\n        \"Comparison\": 3}\r\n    ]\r\n            \r\n`Ejemplo #5` consultar los productos con `UnitPrice` mayor o igual a 50 necesitas enviar en parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"UnitPrice\",\r\n        \"Value\": 50, \r\n        \"Comparison\": 4}\r\n    ]\r\n    \r\n`Ejemplo #6` consultar los productos con `Sku` diferente de DPY-001-A necesitas enviar en parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"Sku\",\r\n        \"Value\": \"DPY-001-A\", \r\n        \"Comparison\": 5}\r\n    ]\r\n    \r\n`Ejemplo #7` este ejemplo es aplicando mas de un filtro, por ejemplo si nos interesa consultar cuales productos tienen `Sku` diferente de DPY-001-A que tengan `Stock` mayor a 0 y `UnitPrice` menor o igual a 100 necesitas enviar en parametro `queryfilter` el siguiente valor:\r\n            \r\n    [{\r\n        \"PropertyName\": \"Sku\",\r\n        \"Value\": \"DPY-001-A\", \r\n        \"Comparison\": 5,\r\n        \"Conjunction\": 0},\r\n     {\r\n        \"PropertyName\": \"Stock\",\r\n        \"Value\": 0, \r\n        \"Comparison\": 3,\r\n        \"Conjunction\": 0},\r\n     {\r\n        \"PropertyName\": \"UnitPrice\",\r\n        \"Value\": 100, \r\n        \"Comparison\": 2,\r\n        \"Conjunction\": 0}\r\n    ]\r\n\r\n¿Estas listo? lo siguiente es darle clic en `Try it out` hacer la prueba con el valor que tiene por defecto el campo `queryfilter` o bien copiar uno de los ejemplos de arriba y jugar con los valores para realizar las consultas",
+        "parameters": [
+          {
+            "name": "queryfilter",
+            "in": "query",
+            "description": "query filter to apply, query example: where IdProduct > 0   [{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]",
+            "schema": {
+              "type": "string",
+              "default": "[{\"PropertyName\": \"IdProduct\",\"Value\": 0, \"Comparison\": 3}]"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductModel"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "create product",
+        "description": "Aquí es donde podras crear la programación masiva de vacaciones de varios empleados al mismo tiempo",
+        "requestBody": {
+          "description": "item",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Indica que el servidor no puede procesar la solicitud debido a que se percibe como un error del cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Indica que el servidor ha entendido nuestra petición, pero se niega a autorizarla",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error en el servidor"
+          },
+          "200": {
+            "description": "Operación exitosa"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OrderModel": {
+        "type": "object",
+        "properties": {
+          "idOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "idStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lstProduct": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderStatusModel": {
+        "required": [
+          "idOrder",
+          "idStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "idOrder": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "idStatus": {
+            "maximum": 5,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "ProductModel": {
+        "required": [
+          "name",
+          "sku",
+          "stock",
+          "unitPrice"
+        ],
+        "type": "object",
+        "properties": {
+          "idProduct": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
