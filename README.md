@@ -21,7 +21,7 @@ Para este proyecto se uso:
 ![Estructura del proyecto](https://github.com/CayetanoHerreraLuisRicardo/IA.Restaurant.Frontend/blob/main/assets/images/image2.png)
 
 ### ⚡️ Ejecutar Script para crear la base de datos
-Este script es para correrlo en SQL Server este mismo script se encuentra en este repositorio se llama bd.sql
+Este script es para correrlo en SQL Server este mismo script se encuentra en este repositorio se llama db.sql
 ```sh
 --Script para crear la las tablas y realizar los insert de los status 
 CREATE TABLE [dbo].[products](
