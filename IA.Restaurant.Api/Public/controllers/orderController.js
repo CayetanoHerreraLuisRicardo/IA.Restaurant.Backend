@@ -1,4 +1,4 @@
-application.controller('orderController', function ($scope, ordersService, statusService, $window, toaster) {
+application.controller('orderController', function ($scope, ordersService, statusService, $filter, toaster) {
     $scope.lstStatus = statusService.get();
     $scope.statusSelected = 0;
     $scope.lstOrders = [];
@@ -14,7 +14,7 @@ application.controller('orderController', function ($scope, ordersService, statu
             ordersService.patch(idOrder, body).success(function (data) {
                 console.log(data);
                 getOrdersByIdStatus($scope.statusSelected);
-                toaster.success({ title: 'success', body: 'order #'+ idOrder +' was successfully canceled' });
+                toaster.success({ title: 'success', body: 'order #' + idOrder +' was successfully canceled' });
             }).error(function (e) {
                 console.error(e);
             });
@@ -51,7 +51,7 @@ application.controller('orderController', function ($scope, ordersService, statu
         toaster.clear();
     };
     function notify (order) {
-        toaster.success({ title: 'new order', body: 'a new order #'+order+' has just been added!' });
+        toaster.success({ title: 'new order', body: 'a new order #' + order.idOrder+' has just been added!' });
     }
     $scope.init = function () {
         const connection = new signalR.HubConnectionBuilder()
