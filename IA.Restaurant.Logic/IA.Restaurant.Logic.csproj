@@ -10,4 +10,8 @@
     <ProjectReference Include="..\IA.Restaurant.Data\IA.Restaurant.Data.csproj" />
     <ProjectReference Include="..\IA.Restaurant.Utils\IA.Restaurant.Utils.csproj" />
   </ItemGroup>
+
+    <ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+	</ItemGroup>
 </Project>

@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>IA Restaurant App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/toaster.css">
+</head>
+
+<body ng-app="IARestaurantApp">
+    <div class="container" ng-controller="orderController">
+        <div ng-init="init()"></div>
+        <div class="row justify-content-start margin-content">
+            <div class="col-2" ng-repeat="x in lstStatus">
+                <div class="pointer" ng-click="changeStatus(x.idStatus)" ng-class="{'alert alert-default': x.idStatus === statusSelected,'alert alert-secondary': x.idStatus===1 && x.idStatus!== statusSelected, 'alert alert-info': x.idStatus===2 && x.idStatus!== statusSelected,'alert alert-success': x.idStatus===3 && x.idStatus!== statusSelected,'alert alert-warning': x.idStatus===4 && x.idStatus!== statusSelected,'alert alert-danger': x.idStatus===5 && x.idStatus!== statusSelected}" role="alert">
+                    <p ng-style="{ color: x.idStatus === statusSelected ? '#33D1FF' : '#000' }">{{x.name}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body scrollable-panel">
+                <div class="card border-primary" style="width: 50%;" ng-repeat="x in lstOrders">
+                    <div class="card-body">
+                        <div class="card-title">
+                            Order #{{x.idOrder | formatId: x.idOrder }} <span class="badge badge-secondary float-right">{{x.status}}</span>
+                            <hr>
+                        </div>
+                        <p class="card-text">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="card-title">
+                                        <u>PRODUCTS:</u>
+                                    </label>
+                                    <div class="card-text">
+                                        <ul class="list-group list-group-flush" ng-repeat="y in x.lstProduct">
+                                            <li class="list-group-item">{{y.name}} - {{y.stock}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="col-6">
+                                        <button ng-click="updateStatus(x.idStatus, x.idOrder)" ng-if="x.idStatus<4" type="button" class="btn btn-sm btn-light float-right"> <i ng-class="{'fa fa-check': x.idStatus ===1 , 'fa fa-play': x.idStatus ===2 }" class="fa fa-check"></i> {{getNextStatus(x.idStatus)}}</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button ng-click="cancel(x.idStatus, x.idOrder)" ng-if="x.idStatus<3" type="button" class="btn btn-sm btn-light float-right"><i class="fa fa-trash"></i>Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 0 } }"></toaster-container>
+    </div>
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="assets/js/toaster.js"></script>
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/signalr.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="controllers/orderController.js"></script>
+    <script type="text/javascript" src="services/orderService.js"></script>
+    <script type="text/javascript" src="services/statusService.js"></script>
+    <script type="text/ng-template" id="toasterBodyTmpl.html">
+        <p>Render a default template!</p>
+    </script>
+
+    <script type="text/ng-template" id="myTemplate.html">
+        <p>Render a custom template! {{bar}}</p>
+    </script>
+
+    <script type="text/ng-template" id="myTemplateWithData.html">
+        <p>Here it is! {{toaster.data}}</p>
+    </script>
+</body>
+
+</html>

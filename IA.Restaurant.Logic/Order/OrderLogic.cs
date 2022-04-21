@@ -3,6 +3,7 @@ using IA.Restaurant.Data;
 using IA.Restaurant.Entities.Tables;
 using IA.Restaurant.Utils.Models;
 using IA.Restaurant.Utils.QueryFilter;
+using Microsoft.AspNetCore.SignalR;
 using System.Linq.Expressions;
 using System.Transactions;
 
@@ -12,10 +13,12 @@ namespace IA.Restaurant.Logic.Order
     {
         public readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public OrderLogic(IUnitOfWork unitOfWork, IMapper iMapper)
+        IHubContext<OrdersHub> _hub;
+        public OrderLogic(IUnitOfWork unitOfWork, IMapper iMapper, IHubContext<OrdersHub> hub)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = iMapper;
+            this._hub = hub;
         }
         public async Task<OrderModel> Create(List<ProductModel> item)
         {
@@ -56,6 +59,7 @@ namespace IA.Restaurant.Logic.Order
             order.IdOrder = newItem.IdOrder;
             order.IdStatus = newItem.IdStatus;
             order.lstProduct = _mapper.Map<List<Products>, List<ProductModel>>(lstProducts);
+            await _hub.Clients.All.SendAsync("notify", order);
             return order;
         }
         public async Task<List<OrderModel>> Get(List<FilterExpression> filter)

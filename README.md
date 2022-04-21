@@ -131,8 +131,20 @@ Tambien si estas en un S.O. Windows podemos ejecutar el IA.Restaurant.Api.exe
 Si todo sale bien, vamos al navegador e ingresamos a http://localhost:5000 o bien con el puerto que nos marque en la consola, para este ejemplo nos mandará un 404 ya que esta ruta nuesta mapeada en nuestra aplicación. Para ver que este funcionando correctamente abrimos http://localhost:5000/swagger/ o http://localhost:5000/swagger/index.html cualquiera de las dos deberia de abrirte la documentación de la API y se te abrira el cliente Swagger tal como si fuera un cliente como POSTMAN pero con una interfaz mas bonita y todo mas amigagle no tienes que configurar nada solo basta con leer la documentación de la API y enviar los datos que te pide, no te preocupes por el cuerpo de solicitud a enviar ahi mismo esta el cuerpo de la solicitud con un ejemplo solo basta con cambiar los datos y listo podras hacer pruebas en los diferentes endpoints. !Ojo! no olvides leer la documentación del swagger 
 ![Swagger](https://github.com/CayetanoHerreraLuisRicardo/IA.Restaurant.Frontend/blob/main/assets/images/image5.png)
 ### ⚡️ Probar toda la aplicación completa Frontend(AngularJs) y Backend (ASP.NET Core Wep API)
-Ahora si podras interactuar con el backend y el frontend aqui te dejo el repo del repositorio de proyecto frontend desarrollado con  [AngularJs](https://github.com/CayetanoHerreraLuisRicardo/IA.Restaurant.Backend) en este repositorio encontraras la descripción de como iniciar o configurar el proyecto frontend.
+Ahora si podras interactuar con el backend y el frontend aqui te dejo el repo del repositorio de proyecto frontend desarrollado con  [AngularJs](https://github.com/CayetanoHerreraLuisRicardo/IA.Restaurant.Frontend) en este repositorio encontraras la descripción de como iniciar o configurar el proyecto frontend.
 ![App](https://github.com/CayetanoHerreraLuisRicardo/IA.Restaurant.Frontend/blob/main/assets/images/image1.png)
 ### ⚡️ Datos extras
 - Tambien se genero el archivo IA.Restaurant.Api.postman_collection.json que se exportó desde el cliente POSTMAN.
 - Tambien se agregó el archivo ApiDoc.json de la documentación de la API generada con Swagger/OpenApi 
+
+NOTA: En la actualización del Miercoles 20/04/2022 se agrego backend y frontend dentro de la solución, lo podras ver dentro del proyecto WepAPi IA.Restaurant.Api en la carpeta public esto para cuando alguien quiera hacer el despliegue de todas la aplicación lo pueda hacer en un mismo servidor con el mismo puerto, en el proyecto solo se agrego en el archivo Startup.cs
+```sh
+	app.UseFileServer(new FileServerOptions
+	{
+		FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Public")),
+		RequestPath = "/home",
+		EnableDefaultFiles = true
+	});
+```
+
+Ademas tambien se agregó hubs usando SignalR para notificar al cliente en este caso a nuestro proyecto AngularJs cuando se agregue o de de alta una nueva orden le notifique en tiempo real a nuestro cliente AngularJs y asi poder refrescar la pantalla.

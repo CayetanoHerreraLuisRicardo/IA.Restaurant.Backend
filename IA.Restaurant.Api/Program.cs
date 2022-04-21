@@ -2,9 +2,11 @@ using IA.Restaurant.Api;
 using IA.Restaurant.Data;
 using IA.Restaurant.Data.Helpers;
 using IA.Restaurant.Logic;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 OpenApi.ConfigureServices(builder.Services);
+builder.Services.AddSignalR();
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,6 +43,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 OpenApi.Configure(app);
+app.UseFileServer(new FileServerOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Public")),
+    RequestPath = "/home",
+    EnableDefaultFiles = true
+});
 app.UseAuthorization();
 
 app.MapControllers();
@@ -49,4 +57,5 @@ app.UseCors(builder =>
                .AllowAnyHeader()
                .AllowAnyMethod()
                .AllowCredentials());
+app.MapHub<OrdersHub>("/hubs/orders");
 app.Run();

@@ -1,0 +1,12 @@
+.pointer {
+  cursor: pointer;
+}
+
+.scrollable-panel{
+  height:80%;
+  overflow-y:scroll;
+  width:100%;
+}
+.margin-content{
+    padding-top: 1em;
+}
